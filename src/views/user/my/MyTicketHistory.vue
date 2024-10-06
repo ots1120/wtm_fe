@@ -1,5 +1,6 @@
 <template lang="">
     <div>
+        <Header title="구매 사용내역" />
         <TicketSummary
             :month="ticketData.month"
             :purchasePrice="ticketData.purchasePrice"
@@ -12,11 +13,13 @@
     </div>
 </template>
 <script>
+import Header from "@/components/admin/layout/Header.vue";
 import TicketSummary from '@/components/user/my/TicketSummary.vue';
 import TicketHistoryList from '@/components/user/my/TicketHistoryList.vue';
 
 export default {
     components: {
+        Header,
         TicketSummary,
         TicketHistoryList
     },

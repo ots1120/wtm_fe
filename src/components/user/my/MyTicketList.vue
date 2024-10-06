@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-start space-x-4 border-b pb-4">
     <div class="bg-gray-200 w-16 h-16 rounded-lg"></div>
-    <div class="flex-1">
+    <div class="flex-1" >
       <h2 class="text-base font-bold">{{ storeName }} <span class="text-yellow-500">⭐ {{ rating }}</span><span :class="remainingTickets >= 3 
         ? 'bg-green-100 text-green-600' 
         : 'bg-red-100 text-red-600'" class="ml-2 rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-600">{{ remainingTickets }}</span></h2>
@@ -32,8 +32,9 @@ export default {
     BookmarkButton
   },
   methods: {
+
     toggleBookmark(){
-      this.$emit('toggle-bookmark');
+      this.$emit('toggle-bookmark'); // 부모 컴포넌트로 이벤트 전송
     }
   }  
 

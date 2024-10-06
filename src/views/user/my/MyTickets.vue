@@ -1,4 +1,6 @@
 <template>
+
+  <Header title="식권" />
   <div>
     <MyTicketList class="p-4"
       v-for="(store, index) in stores"
@@ -10,17 +12,20 @@
       :price="store.price"
       :isBookmarked="store.isBookmarked"
       @toggle-bookmark="toggleBookmark(index)"
+      @click="goToStoreDetail(index)" 
     />
   </div>
 </template>
 
 <script>
+import Header from "@/components/user/layout/Header.vue";
 import MyTicketList from '@/components/user/my/MyTicketList.vue';
 
 export default {
   
 
   components: {
+    Header,
     MyTicketList
   },
 
@@ -28,7 +33,8 @@ export default {
     return {
       stores: [
         {
-          name: '인생맥주',
+          storeId: 1,
+          name: '인쌩맥주',
           rating: 4.6,
           remainingTickets: 10,
           operatingHours: '10시 30분 ~ 12시 30분',
@@ -36,7 +42,8 @@ export default {
           isBookmarked: false // 초기 북마크 상태
         },
         {
-          name: '삼겹살 식당',
+          storeId: 2,
+          name: '브롱스',
           rating: 4.2,
           remainingTickets: 0,
           operatingHours: '11시 00분 ~ 23시 00분',
@@ -44,6 +51,7 @@ export default {
           isBookmarked: false // 초기 북마크 상태
         },
         {
+          storeId: 3,
           name: '한식당',
           rating: 4.8,
           remainingTickets: 3,
@@ -58,10 +66,22 @@ export default {
     toggleBookmark(index) {
       // 해당 가게의 북마크 상태를 토글합니다.
       this.stores[index].isBookmarked = !this.stores[index].isBookmarked;
+    },
+
+    // 가게 클릭 시 상세 페이지로 이동
+    goToStoreDetail(index) {
+      const selectedStore = this.stores[index];
+      console.log(selectedStore.storeId);  // store_id 확인
+      this.$router.push({
+        name: 'MyTicketDetail',  
+        params: { 
+          remainingTickets: selectedStore.remainingTickets,
+          storeName: selectedStore.name,
+          store_id: selectedStore.storeId }
+      });
     }
   },
-  
-  
+
 
 
 };

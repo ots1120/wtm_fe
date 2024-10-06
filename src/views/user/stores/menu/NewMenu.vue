@@ -1,5 +1,6 @@
 <template lang="">
   <div>
+    <Header title="메뉴등록" />
     <main class="flex min-h-screen items-center justify-center">
       <section class="w-full max-w-md p-8">
         <h1 class="hidden">메뉴 등록</h1>
@@ -49,7 +50,12 @@
   </div>
 </template>
 <script>
+import Header from "@/components/admin/layout/Header.vue";
 export default {
+  components: {
+        Header
+
+  },
   data() {
     return {
       formData: {

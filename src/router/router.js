@@ -15,7 +15,7 @@ import MyBookmarks from '@/views/user/my/MyBookmarks.vue';
 import MyReviews from '@/views/user/my/MyReviews.vue';
 import MyTickets from '@/views/user/my/MyTickets.vue';
 import MyTicketHistory from '@/views/user/my/MyTicketHistory.vue';
-// import MyTicketDetail from
+import MyTicketDetail from '@/views/user/my/MyTicketDetail.vue'
 
 
 
@@ -49,7 +49,7 @@ const routes = [
   { path: '/my/reviews', component: MyReviews},
   { path: '/my/tickets', component: MyTickets},
   { path: '/my/tickets/history', component: MyTicketHistory},
-  // { path: '/my/tickets/stores/store_id', component: MyTicketDetail},
+  { path: '/my/tickets/stores/:store_id', name: 'MyTicketDetail', component: MyTicketDetail, props: true },
 
 
 

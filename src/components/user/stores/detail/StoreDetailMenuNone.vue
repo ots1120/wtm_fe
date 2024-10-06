@@ -13,7 +13,7 @@
 export default {
     methods: {
     goToMenuRegPage() {
-      this.$router.push('/newMenu');
+      this.$router.push('/stores/store_id/menu/new');
     }
   }
     
