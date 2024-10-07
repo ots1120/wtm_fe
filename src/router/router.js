@@ -17,6 +17,8 @@ import MyTicketHistory from "@/views/user/my/MyTicketHistory.vue";
 import MyTicketDetail from "@/views/user/my/MyTicketDetail.vue";
 
 // Admin
+import StoreInfoManage from '@/views/admin/store/StoreInfoManage.vue';
+import Dashboard from '@/views/admin/dashboard/AdminDashboard.vue';
 import AdminReviewManage from "@/views/admin/review/AdminReviewManage.vue";
 import AdminNoticeManage from "@/views/admin/notice/AdminNoticeManage.vue";
 import AdminNoticeNew from "@/views/admin/notice/AdminNoticeNew.vue";
@@ -57,6 +59,8 @@ const routes = [
   },
 
   // Admin
+    { path: '/admin', component: Dashboard},
+  { path: '/admin/myStore', component: StoreInfoManage},
   { path: "/admin/review", component: AdminReviewManage },
   { path: "/admin/notice", component: AdminNoticeManage },
   { path: "/admin/notice/new", component: AdminNoticeNew },
