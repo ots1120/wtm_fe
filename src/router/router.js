@@ -59,7 +59,7 @@ const routes = [
   },
 
   // Admin
-    { path: '/admin', component: Dashboard},
+  { path: '/admin', component: Dashboard},
   { path: '/admin/myStore', component: StoreInfoManage},
   { path: "/admin/review", component: AdminReviewManage },
   { path: "/admin/notice", component: AdminNoticeManage },
