@@ -1,4 +1,5 @@
 <template>
+  <Header title="북마크" />
   <div>
     <BookmarkList class="p-4"
       v-for="(store, index) in stores"
@@ -11,16 +12,21 @@
       @toggle-bookmark="toggleBookmark(index)"
     />
   </div>
+  <Footer/>
 </template>
 
 <script>
+import Header from "@/components/user/layout/Header.vue";
 import BookmarkList from '@/components/user/my/BookmarkList.vue';
+import Footer from "@/components/user/layout/Footer.vue";
 
 export default {
   name: 'BookmarkComponent', // 컴포넌트 이름을 다중 단어로 변경
 
   components: {
-    BookmarkList
+    Header,
+    BookmarkList,
+    Footer
   },
 
   data() {

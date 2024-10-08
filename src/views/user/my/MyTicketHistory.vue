@@ -11,17 +11,20 @@
             :history="ticketData.history"
         />
     </div>
+    <Footer/>
 </template>
 <script>
 import Header from "@/components/admin/layout/Header.vue";
 import TicketSummary from '@/components/user/my/TicketSummary.vue';
 import TicketHistoryList from '@/components/user/my/TicketHistoryList.vue';
+import Footer from "@/components/user/layout/Footer.vue";
 
 export default {
     components: {
         Header,
         TicketSummary,
-        TicketHistoryList
+        TicketHistoryList,
+        Footer
     },
     data() {
         return {

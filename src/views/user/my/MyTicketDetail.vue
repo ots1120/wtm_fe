@@ -40,13 +40,14 @@
             @closeModal="closeModal"
         />
     </div>
+    <Footer/>
 
 </template>
 <script>
 
 import Header from "@/components/user/layout/Header.vue";
 import MyTicketsDetailModal from "@/components/user/my/MyTicketsDetailModal.vue";
-
+import Footer from "@/components/user/layout/Footer.vue";
 
 export default {
 
@@ -93,7 +94,8 @@ export default {
 
     components: {
         Header,
-        MyTicketsDetailModal
+        MyTicketsDetailModal,
+        Footer
   },
     
 }
