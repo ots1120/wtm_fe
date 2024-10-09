@@ -15,18 +15,21 @@
       @click="goToStoreDetail(index)" 
     />
   </div>
+  <Footer/>
 </template>
 
 <script>
 import Header from "@/components/user/layout/Header.vue";
 import MyTicketList from '@/components/user/my/MyTicketList.vue';
+import Footer from "@/components/user/layout/Footer.vue";
 
 export default {
   
 
   components: {
     Header,
-    MyTicketList
+    MyTicketList,
+    Footer
   },
 
   data() {

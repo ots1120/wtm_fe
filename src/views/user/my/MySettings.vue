@@ -54,10 +54,12 @@
             </div>
         </form>
     </section>
+    <Footer/>
 </template>
 
 <script>
 import Header from '@/components/user/layout/Header.vue';
+import Footer from "@/components/user/layout/Footer.vue";
 
 export default {
     data() {
@@ -71,7 +73,8 @@ export default {
     },
 
     components: {
-        Header: Header,
+        Header,
+        Footer
     },
 
 }
