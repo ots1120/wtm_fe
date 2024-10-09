@@ -6,7 +6,8 @@
     messageTitle="공지 등록을 하시겠습니까?"
     messageBody="공지를 등록하시려면 확인을 눌러주세요"
     @confirm="submit"
-    @cancel="cancel" />
+    @cancel="cancel"
+  />
 </template>
 <script>
 import Header from "@/components/admin/layout/Header.vue";

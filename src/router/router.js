@@ -26,7 +26,6 @@ import AdminNoticeEdit from "@/views/admin/notice/AdminNoticeEdit.vue";
 import AdminMenuEdit from "@/views/admin/menu/AdminMenuEdit.vue";
 import AdminMenuReg from "@/views/admin/menu/AdminMenuReg.vue";
 import AdminMenu from "@/views/admin/menu/AdminMenu.vue";
-import AdminTicket from '@/views/admin/ticket/StoreTicketHistory.vue';
 
 // 각 경로와 컴포넌트를 매핑하는 라우터 설정
 const routes = [
@@ -74,8 +73,6 @@ const routes = [
   { path: "/admin/menu", component: AdminMenu },
   { path: "/admin/menu/edit", component: AdminMenuEdit },
   { path: "/admin/menu/Reg", component: AdminMenuReg },
-  { path: "/admin/ticket", component: AdminTicket },
-
 ];
 
 // 라우터 인스턴스 생성
