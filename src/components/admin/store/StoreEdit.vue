@@ -1,11 +1,10 @@
 <template>
   <section class="flex justify-center">
     <form
-      @submit.prevent="onSubmitForm"
+      @submit.prevent="openModal"
       action=""
       enctype="multipart/form-data"
-      class="w-full max-w-lg"
-    >
+      class="w-full max-w-lg">
       <div class="items-center justify-center border-b text-center">
         <!-- 프로필 이미지 미리보기 -->
         <img
@@ -13,8 +12,7 @@
           alt="Profile Image"
           class="mx-auto mb-3 mt-4 block rounded-full bg-gray-300"
           width="120"
-          height="120"
-        />
+          height="120" />
         <div class="mb-3">
           <label for="profileImg" class="text-blue-500 cursor-pointer"
             >가게 사진 수정</label
@@ -24,8 +22,7 @@
             id="profileImg"
             name="profileImg"
             class="hidden"
-            @change="handleImageUpload"
-          />
+            @change="handleImageUpload" />
         </div>
       </div>
 
@@ -40,8 +37,7 @@
             id="nickname"
             v-model="nickname"
             class="w-full max-w-sm p-2"
-            placeholder="가게이름"
-          />
+            placeholder="가게이름" />
         </div>
 
         <!-- 아이디 -->
@@ -54,8 +50,7 @@
             id="userid"
             v-model="userid"
             class="w-full max-w-sm p-2"
-            placeholder="아이디"
-          />
+            placeholder="아이디" />
         </div>
 
         <!-- 비밀번호 -->
@@ -68,8 +63,7 @@
             id="password"
             v-model="password"
             class="w-full max-w-sm p-2"
-            placeholder="비밀번호(9~16자리)"
-          />
+            placeholder="비밀번호(9~16자리)" />
         </div>
 
         <!-- 가게 번호 -->
@@ -82,8 +76,7 @@
             id="phone"
             v-model="phone"
             class="w-full max-w-sm p-2"
-            placeholder="010-1234-5678"
-          />
+            placeholder="010-1234-5678" />
         </div>
 
         <!-- 이메일 -->
@@ -96,8 +89,7 @@
             id="email"
             v-model="email"
             class="w-full max-w-sm p-2"
-            placeholder="example@ex.com"
-          />
+            placeholder="example@ex.com" />
         </div>
 
         <!-- SNS -->
@@ -110,8 +102,7 @@
             id="sns"
             v-model="sns"
             class="w-full max-w-sm p-2"
-            placeholder="SNS 주소"
-          />
+            placeholder="SNS 주소" />
         </div>
 
         <!-- 영업시간 -->
@@ -123,16 +114,28 @@
             type="time"
             id="startTime"
             v-model="startTime"
-            class="w-1/3 p-2"
-          />
+            class="w-1/3 p-2" />
           <span>~</span>
           <input type="time" id="endTime" v-model="endTime" class="w-1/3 p-2" />
         </div>
+      </div>
+      <div class="mt-20">
+        <button
+          class="w-full h-12 mt-4 bg-orange-400 text-white p-2 rounded-xl"
+          type="submit">
+          저장
+        </button>
       </div>
     </form>
   </section>
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    openModal() {
+      this.$emit("open-modal");
+    },
+  },
+};
 </script>
 <style></style>
