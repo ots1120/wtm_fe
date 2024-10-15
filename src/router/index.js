@@ -15,7 +15,7 @@ const routes = [
     path: '/user',
     children: [
       {
-        path: '/signup',
+        path: 'signup',
         component: () => import('@/pages/user/SignupPage.vue'),
       },
       {
@@ -34,7 +34,7 @@ const routes = [
     path: '/stores/:storeId',
     children: [
       {
-        path: '/',
+        path: '',
         component: () => import('@/pages/stores/detail/StoreDetail.vue'),
       },
       {
@@ -55,29 +55,29 @@ const routes = [
   {
     path: '/my',
     children: [
-      { path: '/', component: () => import('@/pages/my/MyPage.vue') },
+      { path: '', component: () => import('@/pages/my/MyPage.vue') },
       {
-        path: '/settings',
+        path: 'settings',
         component: () => import('@/pages/my/MySettings.vue'),
       },
       {
-        path: '/bookmarks',
+        path: 'bookmarks',
         component: () => import('@/pages/my/MyBookmarks.vue'),
       },
       {
-        path: '/reviews',
+        path: 'reviews',
         component: () => import('@/pages/my/MyReviews.vue'),
       },
       {
-        path: '/tickets',
+        path: 'tickets',
         component: () => import('@/pages/my/MyTickets.vue'),
       },
       {
-        path: '/tickets/history',
+        path: 'tickets/history',
         component: () => import('@/pages/my/MyTicketHistory.vue'),
       },
       {
-        path: '/tickets/stores/:storeId',
+        path: 'tickets/stores/:storeId',
         component: () => import('@/pages/my/MyTicketDetail.vue'),
         props: true,
       },
@@ -89,49 +89,49 @@ const routes = [
     path: '/admin',
     children: [
       {
-        path: '/',
-        components: () => import('@/pages/admin/dashboard/AdminDashboard.vue'),
+        path: '',
+        component: () => import('@/pages/admin/dashboard/AdminDashboard.vue'),
       },
       {
-        path: '/:storeId',
-        components: () => import('@/pages/admin/dashboard/AdminDashboard.vue'),
+        path: ':storeId',
+        component: () => import('@/pages/admin/dashboard/AdminDashboard.vue'),
       },
       {
-        path: '/:storeId/myStore',
-        components: () => import('@/pages/admin/store/StoreInfoManage.vue'),
+        path: ':storeId/mystore',
+        component: () => import('@/pages/admin/store/StoreInfoManage.vue'),
       },
       {
-        path: '/:storeId/review',
-        components: () => import('@/pages/admin/review/AdminReviewPage.vue'),
+        path: ':storeId/review',
+        component: () => import('@/pages/admin/review/AdminReviewPage.vue'),
       },
       {
-        path: '/:storeId/notice',
-        components: () => import('@/pages/admin/notice/AdminNoticePage.vue'),
+        path: ':storeId/notice',
+        component: () => import('@/pages/admin/notice/AdminNoticePage.vue'),
       },
       {
-        path: '/:storeId/notice/new',
-        components: () => import('@/pages/admin/notice/AdminNoticeNew.vue'),
+        path: ':storeId/notice/new',
+        component: () => import('@/pages/admin/notice/AdminNoticeNew.vue'),
       },
       {
-        path: '/:storeId/notice/edit/:noticeId',
-        components: () => import('@/pages/admin/notice/AdminNoticeEdit.vue'),
+        path: ':storeId/notice/edit/:noticeId',
+        component: () => import('@/pages/admin/notice/AdminNoticeEdit.vue'),
         props: true,
       },
       {
-        path: '/:storeId/menu',
-        components: () => import('@/pages/admin/menu/AdminMenu.vue'),
+        path: ':storeId/menu',
+        component: () => import('@/pages/admin/menu/AdminMenu.vue'),
       },
       {
-        path: '/:storeId/menu/edit',
-        components: () => import('@/pages/admin/menu/AdminMenuEdit.vue'),
+        path: ':storeId/menu/edit',
+        component: () => import('@/pages/admin/menu/AdminMenuEdit.vue'),
       },
       {
-        path: '/:storeId/menu/Reg',
-        components: () => import('@/pages/admin/menu/AdminMenuReg.vue'),
-      },
-      {
-        path: '/:storeId/ticket',
+        path: ':storeId/ticket',
         component: () => import('@/pages/admin/ticket/StoreTicketHistory.vue'),
+      },
+      {
+        path: ':storeId/menu/reg',
+        component: () => import('@/pages/admin/menu/AdminMenuReg.vue'),
       },
     ],
   },
