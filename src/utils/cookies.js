@@ -9,14 +9,14 @@ function saveUserToCookie(value) {
 function getAuthFromCookie() {
   return document.cookie.replace(
     /(?:(?:^|.*;\s*)wtm_auth\s*=\s*([^;]*).*$)|^.*$/,
-    '$1'
+    '$1',
   );
 }
 
 function getUserFromCookie() {
   return document.cookie.replace(
     /(?:(?:^|.*;\s*)wtm_user\s*=\s*([^;]*).*$)|^.*$/,
-    '$1'
+    '$1',
   );
 }
 

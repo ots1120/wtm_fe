@@ -23,7 +23,7 @@ export function setInterceptors(instance) {
     (error) => {
       // request 에러 예외 처리
       return Promise.reject(error);
-    }
+    },
   );
 
   // response interceptor 등록
@@ -35,7 +35,7 @@ export function setInterceptors(instance) {
     (error) => {
       // 2xx 범위를 벗어난 응답은 이 함수에서 처리
       return Promise.reject(error);
-    }
+    },
   );
   return instance;
 }

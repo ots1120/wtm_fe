@@ -90,7 +90,6 @@ export default {
     storeId: Number,
     remainingTickets: Number,
   },
-
   data() {
     return {
       isModalVisible: false,

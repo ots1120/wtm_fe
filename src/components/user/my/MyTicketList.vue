@@ -14,7 +14,9 @@
           >{{ remainingTickets }}</span
         >
       </h2>
-      <p class="text-sm text-gray-500">운영시간 : {{ operatingHours }}</p>
+      <p class="text-sm text-gray-500">
+        운영시간 : {{ openTime }} ~ {{ closeTime }}
+      </p>
       <p class="text-sm text-gray-500">가격 : {{ price }}원</p>
     </div>
     <BookmarkButton
@@ -32,7 +34,8 @@ export default {
     storeName: String,
     rating: Number,
     remainingTickets: Number,
-    operatingHours: String,
+    openTime: String,
+    closeTime: String,
     price: Number,
     isBookmarked: {
       type: Boolean,
@@ -44,7 +47,7 @@ export default {
   },
   methods: {
     toggleBookmark() {
-      this.$emit('toggle-bookmark');
+      this.$emit('toggle-bookmark'); // 부모 컴포넌트로 이벤트 전송
     },
   },
 };

@@ -31,15 +31,21 @@ const routes = [
 
   // stores
   {
+    path: '/stores',
+    component: () => import('@/pages/stores/Stores.vue'),
+  },
+  {
     path: '/stores/:storeId',
     children: [
       {
         path: '',
         component: () => import('@/pages/stores/detail/StoreDetail.vue'),
+        props: true,
       },
       {
         path: 'menu/new',
         component: () => import('@/pages/stores/menu/NewMenu.vue'),
+        props: true,
       },
       {
         path: 'reviews/new',
@@ -52,6 +58,7 @@ const routes = [
     ],
   },
 
+  // my
   {
     path: '/my',
     children: [
@@ -84,7 +91,7 @@ const routes = [
     ],
   },
 
-  // Admin
+  // admin
   {
     path: '/admin',
     children: [

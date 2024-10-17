@@ -12,15 +12,18 @@
       :isBookmarked="store.isBookmarked"
       @toggle-bookmark="toggleBookmark(index)"
     />
+    <BottomNavBar />
   </div>
 </template>
 
 <script>
 import MyTicketList from '@/components/user/my/MyTicketList.vue';
+import BottomNavBar from '@/components/user/layout/BottomNavBar.vue';
 
 export default {
   components: {
     MyTicketList,
+    BottomNavBar,
   },
 
   data() {

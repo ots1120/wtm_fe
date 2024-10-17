@@ -19,20 +19,20 @@ export const getReply = (storeId, reviewId) => {
 export const postReply = (storeId, reviewId, replyData) => {
   return instance.post(
     `/admin/stores/${storeId}/reviews/${reviewId}/reply`,
-    replyData
+    replyData,
   );
 };
 
 export const updateReply = (storeId, reviewId, replyId, updatedReplyData) => {
   return instance.put(
     `/admin/stores/${storeId}/reviews/${reviewId}/reply/${replyId}`,
-    updatedReplyData
+    updatedReplyData,
   );
 };
 
 export const deleteReply = (storeId, reviewId, replyId) => {
   return instance.delete(
-    `/admin/stores/${storeId}/reviews/${reviewId}/reply/${replyId}`
+    `/admin/stores/${storeId}/reviews/${reviewId}/reply/${replyId}`,
   );
 };
 
@@ -48,7 +48,7 @@ export const postNotices = (storeId, noticeData) => {
 export const updateNotices = (storeId, noticeId, updatedNoticeData) => {
   return instance.put(
     `/admin/stores/${storeId}/notices/${noticeId}`,
-    updatedNoticeData
+    updatedNoticeData,
   );
 };
 

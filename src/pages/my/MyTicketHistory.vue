@@ -7,16 +7,19 @@
       :remainingCount="ticketData.remainingCount"
     />
     <TicketHistoryList :history="ticketData.history" />
+    <BottomNavBar />
   </div>
 </template>
 <script>
 import TicketSummary from '@/components/user/my/TicketSummary.vue';
 import TicketHistoryList from '@/components/user/my/TicketHistoryList.vue';
+import BottomNavBar from '@/components/user/layout/BottomNavBar.vue';
 
 export default {
   components: {
     TicketSummary,
     TicketHistoryList,
+    BottomNavBar,
   },
   data() {
     return {
