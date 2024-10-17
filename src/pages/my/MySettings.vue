@@ -113,13 +113,19 @@
         </div>
       </form>
     </section>
+    <BottomNavBar />
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/user/layout/TheHeader.vue';
+import BottomNavBar from '@/components/user/layout/BottomNavBar.vue';
 
 export default {
+  components: {
+    TheHeader: TheHeader,
+    BottomNavBar,
+  },
   data() {
     return {
       title: '마이페이지',
@@ -127,10 +133,6 @@ export default {
   },
 
   methods: {},
-
-  components: {
-    TheHeader: TheHeader,
-  },
 };
 </script>
 

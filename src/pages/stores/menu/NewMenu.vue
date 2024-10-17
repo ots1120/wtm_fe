@@ -1,5 +1,6 @@
 <template lang="">
   <div>
+    <TheHeader title="메뉴등록" />
     <main class="flex min-h-screen items-center justify-center">
       <section class="w-full max-w-md p-8">
         <h1 class="hidden">메뉴 등록</h1>
@@ -114,9 +115,13 @@
   </div>
 </template>
 <script>
-import { instance } from '@/api/index';
+import TheHeader from '@/components/user/layout/TheHeader.vue';
+// import { instance } from '@/api/index';
 
 export default {
+  components: {
+    TheHeader: TheHeader,
+  },
   data() {
     return {
       formData: {
@@ -163,12 +168,17 @@ export default {
 
       try {
         // axios를 사용하여 multipart/form-data로 전송
-        const response = await instance.post('menu', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        console.log('서버 응답:', response);
+        // TO DO: admin이 아닌 stores로 API 명 변경
+        // const response = await instance.post(
+        //   `/stores/${storeId}/menu/new`,
+        //   formData,
+        //   {
+        //     headers: {
+        //       'Content-Type': 'multipart/form-data',
+        //     },
+        //   },
+        // );
+        // console.log('서버 응답:', response);
       } catch (error) {
         console.error('메뉴 등록 중 오류 발생:', error);
       }

@@ -3,12 +3,11 @@ module.exports = {
   env: {
     node: true,
   },
+  plugins: ['prettier'],
   extends: [
     'plugin:prettier/recommended',
     'plugin:vue/essential',
     'eslint:recommended',
-    'prettier',
-    'prettier/prettier',
   ],
   parserOptions: {
     parser: '@babel/eslint-parser',
@@ -29,11 +28,11 @@ module.exports = {
         semi: true,
         useTabs: false,
         tabWidth: 2,
-        trailingComma: 'es5',
+        trailingComma: 'all',
         printWidth: 80,
         bracketSpacing: true,
         arrowParens: 'always',
-        endOfLine: 'lf',
+        endOfLine: 'auto',
         insertFinalNewline: false, // 파일 끝에 새로운 줄을 강제하지 않음
       },
     ],
