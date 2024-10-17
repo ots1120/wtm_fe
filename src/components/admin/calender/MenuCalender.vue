@@ -1,24 +1,24 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen bg-gray-50">
-    <div class="calendar bg-white p-6 rounded-lg shadow-lg">
+  <div class="flex items-center justify-center rounded-xl bg-gray-50 m-2">
+    <div class="calendar rounded-lg bg-white p-6 shadow-lg w-full">
       <!-- Header -->
-      <div class="header flex justify-between items-center mb-4">
-        <div class="year-month text-4xl font-semibold"></div>
+      <div class="header mb-4 flex items-center justify-between">
+        <div class="year-month text-xl font-semibold"></div>
         <div class="nav flex">
           <button
-            class="nav-btn px-3 py-1 border border-gray-400 rounded-l-lg hover:bg-gray-200"
+            class="nav-btn rounded-l-lg border-gray-400 px-3 py-1 hover:bg-gray-100"
             @click="prevMonth"
           >
             &lt;
           </button>
           <button
-            class="go-today px-3 py-1 border border-gray-400 hover:bg-gray-200"
+            class="go-today border-gray-400 px-3 py-1 hover:bg-gray-100"
             @click="goToday"
           >
             Today
           </button>
           <button
-            class="nav-btn px-3 py-1 border border-gray-400 rounded-r-lg hover:bg-gray-200"
+            class="nav-btn rounded-r-lg border-gray-400 px-3 py-1 hover:bg-gray-100"
             @click="nextMonth"
           >
             &gt;
@@ -27,7 +27,7 @@
       </div>
 
       <!-- Days of the Week -->
-      <div class="days grid grid-cols-7 text-center text-lg text-gray-700 mb-2">
+      <div class="days text-md mb-2 grid grid-cols-7 text-center text-gray-700">
         <div class="day text-red-500">일</div>
         <div class="day">월</div>
         <div class="day">화</div>
@@ -38,40 +38,39 @@
       </div>
 
       <!-- Dates -->
-      <div
-        class="dates grid grid-cols-7 gap-px border-t border-r border-gray-400"
-      >
+      <div class="dates grid grid-cols-7 gap-px border border-gray-300">
         <div
           v-for="(date, i) in datesHtml"
           :key="i"
           :class="[
             'date',
-            'p-4',
+            'p-2',
             'text-center',
-            'border-b',
-            'border-l',
-            'border-gray-400',
+            'border',
+            'border-gray-100',
             isToday(date) ? 'today' : '',
-            isSelected(date) ? 'bg-blue-100 rounded-lg p-1' : '',
+            isSelected(date)
+              ? 'bg-blue-100 rounded-lg p-1 hover:bg-blue-100 duration-300 ease-in-out'
+              : '',
             getDateClass(i, date.type),
           ]"
           @click="handleDateClick(date, i)"
         >
-          <div>
-            {{ date.number }}
-          </div>
+          <div>{{ date.number }}</div>
           <!-- 주말을 제외한 날짜에 등록/미등록 뱃지를 표시 -->
           <div v-if="!isWeekend(i) && date.type === 'current'">
-            <span
-              v-if="hasMenuData(date)"
-              class="badge bg-green-500 text-white rounded-full px-2 py-1 mt-2"
-              >등록</span
-            >
-            <span
-              v-else
-              class="badge bg-red-500 text-white rounded-full px-2 py-1 mt-2"
-              >미등록</span
-            >
+            <div v-if="hasMenuData(date)">
+              <span
+                class="badge mt-2 inline-block h-2 w-2 rounded-3xl bg-green-500"
+              ></span>
+              <!-- <span class="text-xs text-black">등록</span> -->
+            </div>
+            <div v-else>
+              <span
+                class="badge mt-2 inline-block h-2 w-2 rounded-3xl bg-red-500"
+              ></span>
+              <!-- <span class="text-xs text-black">미등록</span> -->
+            </div>
           </div>
         </div>
       </div>
@@ -233,13 +232,5 @@ export default {
 .today {
   color: red;
   text-align: center;
-}
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-align: center;
-  border-radius: 9999px;
 }
 </style>

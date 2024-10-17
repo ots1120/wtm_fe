@@ -3,7 +3,7 @@
     <AdminHeader title="공지관리" />
     <!-- 임시로 데이터 불러오는 역할-->
     <NoticeList :notices="noticesData" />
-    <WriteButton pushRoute="/admin/notice/new" />
+    <WriteButton :pushRoute="`/admin/${storeId}/notice/new`" />
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
   },
   data() {
     return {
+      storeId: null,
       noticesData: [
         {
           id: 1,

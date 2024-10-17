@@ -70,18 +70,23 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      storeId: null,
+    };
+  },
   methods: {
     goToDashboard() {
       // this.setStoreId(this.storeId); // Vuex에 storeId 설정
-      this.$router.push('/admin/');
+      this.$router.push(`/admin/${this.storeId}`);
     },
     goToMenuManagement() {
       // this.setStoreId(this.storeId); // Vuex에 storeId 설정
-      this.$router.push('/admin/menu');
+      this.$router.push(`/admin/${this.storeId}/menu`);
     },
     goToStoreManagement() {
       // this.setStoreId(this.storeId); // Vuex에 storeId 설정
-      this.$router.push('/admin/myStore');
+      this.$router.push(`/admin/${this.storeId}/myStore`);
     },
   },
 };
