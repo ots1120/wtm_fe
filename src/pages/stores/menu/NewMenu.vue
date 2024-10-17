@@ -114,7 +114,7 @@
   </div>
 </template>
 <script>
-import { admin } from '@/api/index';
+import { instance } from '@/api/index';
 
 export default {
   data() {
@@ -163,7 +163,7 @@ export default {
 
       try {
         // axios를 사용하여 multipart/form-data로 전송
-        const response = await admin.post('menu', formData, {
+        const response = await instance.post('menu', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

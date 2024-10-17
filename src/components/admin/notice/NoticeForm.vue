@@ -43,7 +43,7 @@
           class="w-full h-12 mt-4 bg-orange-400 text-white p-2 rounded-xl"
           type="submit"
         >
-          {{ isEditMode ? "수정 완료" : "등록" }}
+          {{ isEditMode ? '수정 완료' : '등록' }}
         </button>
       </div>
     </form>
@@ -55,7 +55,7 @@ export default {
   props: {
     initialData: {
       type: Object,
-      default: () => ({ content: "", menuImages: [] }), // 공지 초기 데이터
+      default: () => ({ content: '', menuImages: [] }), // 공지 초기 데이터
     },
     isEditMode: {
       type: Boolean,
@@ -81,7 +81,7 @@ export default {
       }
     },
     openModal() {
-      this.$emit("open-modal");
+      this.$emit('open-modal');
     },
   },
 };
