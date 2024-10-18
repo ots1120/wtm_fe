@@ -67,8 +67,8 @@
             :key="index"
             :storeName="noticeData.storeName"
             :daysAgo="noticeData.daysAgo"
-            :noticeName="noticeData.noticeName"
-            :noticeContent="noticeData.noticeContent"
+            :noticeName="noticeData.title"
+            :noticeContent="noticeData.content"
           />
         </div>
       </template>
@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import StoreDetailTabs from '@/components/user/stores/detail/StoreDetailTabs.vue';
 import StoreDetailHome from '@/components/user/stores/detail/StoreDetailHome.vue';
 import StoreDetailMenu from '@/components/user/stores/detail/StoreDetailMenu.vue';
@@ -109,46 +110,60 @@ export default {
   },
   data() {
     return {
-      selectedStore: {
-        id: 1,
-        address: '서울시 강남구 테헤란로',
-        sns: '@store_sns',
-        contact: '010-1234-5678',
-        operatingHours: '09:00 - 22:00',
-        price: '₩10,000',
-      },
-
-      noticeDatas: [
-        {
-          storeName: '인쌩맥주', // Example month
-          daysAgo: '2', // Example purchase amount
-          noticeName: '임시휴무', // Example used amount
-          noticeContent:
-            '여름휴가일정으로 15~17일 휴무입니다! 여름 휴가로 15일~17일(목~토)임시 휴일입니다. 감사합니다!', // Example remaining tickets
-        },
-        {
-          storeName: '인쌩맥주', // Example month
-          daysAgo: '2', // Example purchase amount
-          noticeName: '임시휴무', // Example used amount
-          noticeContent:
-            '여름휴가일정으로 15~17일 휴무입니다! 여름 휴가로 15일~17일(목~토)임시 휴일입니다. 감사합니다!', // Example remaining tickets
-        },
-      ],
-
-      ticketInf: {
-        storeName: '인쌩맥주',
-        remainingTickets: 6,
-      },
-
-      ReviewInf: {
-        storeName: '인쌩맥주',
-        remainingTickets: 6,
-      },
-
-      ReviewDatas: {
-        reviewCount: 20,
-      },
+      selectedStore: {},
+      noticeDatas: [],
+      ticketInf: {},
+      ReviewDatas: {},
+      storeMenu: [],
     };
+  },
+  mounted() {
+    // 가게 정보를 가져오는 API 호출
+    axios
+      .get(`http://localhost:3000/stores/${this.$route.params.storeId}`)
+      .then((response) => {
+        console.log('Store API response:', response.data); // 확인용 로그
+        const { store, Ticket } = response.data;
+        this.selectedStore = store;
+        this.ticketInf = {
+          storeName: store.name,
+          remainingTickets: Ticket.length > 0 ? Ticket[0].remainingTickets : 0,
+        };
+        // 필요시 추가 데이터를 셋업합니다.
+      })
+      .catch((error) => {
+        console.error('Store data fetching error:', error);
+      });
+
+    // 공지사항 데이터를 가져오는 API 호출
+    axios
+      .get(`http://localhost:3000/stores/${this.$route.params.storeId}/notices`)
+      .then((response) => {
+        this.noticeDatas = response.data;
+      })
+      .catch((error) => {
+        console.error('Notice data fetching error:', error);
+      });
+
+    // 메뉴 데이터를 가져오는 API 호출
+    axios
+      .get(`http://localhost:3000/stores/${this.$route.params.storeId}/menus`)
+      .then((response) => {
+        this.storeMenu = response.data.menus;
+      })
+      .catch((error) => {
+        console.error('Menu data fetching error:', error);
+      });
+
+    // 리뷰 데이터를 가져오는 API 호출
+    axios
+      .get(`http://localhost:3000/stores/${this.$route.params.storeId}/reviews`)
+      .then((response) => {
+        this.ReviewDatas = response.data;
+      })
+      .catch((error) => {
+        console.error('Review data fetching error:', error);
+      });
   },
 };
 </script>

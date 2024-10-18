@@ -33,7 +33,7 @@ export default {
   methods: {
     async fetchStores() {
       try {
-        const response = await axios.get('http://localhost:3000/api/stores');
+        const response = await axios.get('http://localhost:3000/stores');
         this.stores = response.data;
       } catch (error) {
         console.error('Failed to fetch stores:', error);
@@ -45,12 +45,16 @@ export default {
     },
 
     // 가게 클릭 시 상세 페이지로 이동
+    // goToStoreDetail(index) {
+    //   const selectedStore = this.stores[index];
+    //   this.$router.push({
+    //     name: 'StoreDetail',
+    //     params: { store_id: selectedStore.storeId },
+    //   });
+    // },
     goToStoreDetail(index) {
       const selectedStore = this.stores[index];
-      this.$router.push({
-        name: 'StoreDetail',
-        params: { store_id: selectedStore.storeId },
-      });
+      this.$router.push(`/stores/${selectedStore.storeId}`);
     },
   },
   mounted() {

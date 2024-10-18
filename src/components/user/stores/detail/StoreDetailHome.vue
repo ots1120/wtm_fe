@@ -159,6 +159,10 @@ export default {
       type: Object,
       required: true,
     },
+    ticketInf: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>
