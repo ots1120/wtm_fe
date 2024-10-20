@@ -59,7 +59,7 @@
           />
         </g>
       </svg>
-      <a>{{ store.sns }}</a>
+      <a>{{ storeSns?.url || 'SNS 정보 없음' }}</a>
     </div>
 
     <div class="mb-5 flex items-center gap-5">
@@ -116,7 +116,7 @@
           />
         </g>
       </svg>
-      <span>{{ store.operatingHours }}</span>
+      <span>{{ store.openTime }} - {{ store.closeTime }}</span>
     </div>
 
     <div class="mb-5 flex items-center gap-5">
@@ -148,7 +148,7 @@
           />
         </g>
       </svg>
-      <span>{{ store.price }}</span>
+      <span>{{ Ticket.price ? Ticket.price : '가격 정보 없음' }}</span>
     </div>
   </div>
 </template>
@@ -159,7 +159,11 @@ export default {
       type: Object,
       required: true,
     },
-    ticketInf: {
+    Ticket: {
+      type: Object,
+      required: true,
+    },
+    storeSns: {
       type: Object,
       required: true,
     },

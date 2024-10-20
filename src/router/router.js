@@ -43,7 +43,7 @@ const routes = [
         props: true,
       },
       {
-        path: 'menu/new',
+        path: 'menus/new',
         component: () => import('@/pages/stores/menu/NewMenu.vue'),
         props: true,
       },

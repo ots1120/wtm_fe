@@ -11,13 +11,16 @@
       <!-- 첫 번째 탭: 식당정보 -->
       <template #tab0>
         <div>
-          <StoreDetailHome class="p-4" :store="selectedStore" />
+          <StoreDetailHome class="p-4" 
+          :store="selectedStore"
+          :storeSns="storeSns" 
+          :Ticket="Ticket"/>
         </div>
       </template>
 
       <!-- 두 번째 탭: 메뉴 -->
       <template #tab1>
-        <div v-if="storeMenu">
+        <div v-if="storeMenu && storeMenu.length > 0">
           <StoreDetailMenu class="p-4" :menu="storeMenu" />
         </div>
         <div v-else>
@@ -31,7 +34,7 @@
           <StoreDetailTicket
             class="p-4"
             :key="index"
-            :storeName="ticketInf.storeName"
+            :storeName="ticketInf.name"
             :remainingTickets="ticketInf.remainingTickets"
           />
         </div>
@@ -114,6 +117,8 @@ export default {
   data() {
     return {
       selectedStore: {},
+      Ticket:{},
+      storeSns:[],
       noticeDatas: [],
       ticketInf: {},
       ReviewDatas: {},
@@ -126,12 +131,10 @@ export default {
       .get(`http://localhost:3000/stores/${this.$route.params.storeId}`)
       .then((response) => {
         console.log('Store API response:', response.data); // 확인용 로그
-        const { store, Ticket } = response.data;
+        const { store,storeSns,Ticket } = response.data;
         this.selectedStore = store;
-        this.ticketInf = {
-          storeName: store.name,
-          remainingTickets: Ticket.length > 0 ? Ticket[0].remainingTickets : 0,
-        };
+        this.Ticket = Ticket;
+        this.storeSns = storeSns;
         // 필요시 추가 데이터를 셋업합니다.
       })
       .catch((error) => {
@@ -152,7 +155,22 @@ export default {
     axios
       .get(`http://localhost:3000/stores/${this.$route.params.storeId}/menus`)
       .then((response) => {
-        this.storeMenu = response.data.menus;
+        const menus = response.data.menus;
+
+      // 모든 메뉴를 배열로 저장 (카테고리 구분 없이)
+      this.storeMenu = menus.map((item) => item.name);
+      })
+      .catch((error) => {
+        console.error('Menu data fetching error:', error);
+      });
+
+
+    // 식권 데이터를 가져오는 API 호출
+    axios
+      .get(`http://localhost:3000/stores/${this.$route.params.storeId}/tickets`)
+      .then((response) => {
+        console.log('식권데이터:' + response)
+        this.ticketInf = response.data;
       })
       .catch((error) => {
         console.error('Menu data fetching error:', error);
