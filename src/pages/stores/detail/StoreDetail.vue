@@ -40,20 +40,23 @@
       <!-- 네 번째 탭: 리뷰 -->
       <template #tab3>
         <div>
-          <StoreDetailReviewScore class="p-4" :store="selectedStore" />
+          <StoreDetailReviewScore class="p-4" />
         </div>
         <div>
-          <StoreDetailReviewCount class="p-4" :store="selectedStore" />
+          <StoreDetailReviewCount class="p-4" 
+            :reviewCount="ReviewDatas.reviewCount"
+          />
         </div>
         <div>
           <StoreDetailReviewList
             class="p-4"
-            v-for="(noticeData, index) in noticeDatas"
+            v-for="(reviewData, index) in ReviewDatas.reviews"
             :key="index"
-            :storeName="noticeData.storeName"
-            :daysAgo="noticeData.daysAgo"
-            :noticeName="noticeData.noticeName"
-            :noticeContent="noticeData.noticeContent"
+            :reviewerName="reviewData.user.name"
+            :daysAgo="calculateDaysAgo(reviewData.createdAt)"
+            :reviewContent="reviewData.content"
+            :reviewImages="reviewData.images.map((img) => img.url)"
+            :ratingStars="reviewData.avgScore"
           />
         </div>
       </template>
@@ -159,11 +162,22 @@ export default {
     axios
       .get(`http://localhost:3000/stores/${this.$route.params.storeId}/reviews`)
       .then((response) => {
+        console.log('리뷰 데이터:', response.data); // API에서 받아온 리뷰 데이터 확인
         this.ReviewDatas = response.data;
+        console.log(this.ReviewDatas);
       })
       .catch((error) => {
         console.error('Review data fetching error:', error);
       });
+  },
+  methods: {
+    // 작성일로부터 경과한 날짜 계산
+    calculateDaysAgo(reviewDate) {
+      const now = new Date();
+      const reviewDateTime = new Date(reviewDate);
+      const timeDiff = now - reviewDateTime;
+      return Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // 일 단위 계산
+    },
   },
 };
 </script>
